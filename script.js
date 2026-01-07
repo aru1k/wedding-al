@@ -227,6 +227,7 @@ function loadUcapan(){
 
 loadUcapan();
 
+setInterval(loadUcapan, 15000);
 function formatWaktu(w){
     const d = new Date(w);
     return d.toLocaleDateString("id-ID", {
