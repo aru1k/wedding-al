@@ -236,3 +236,41 @@ function formatWaktu(w){
         year:"numeric"
     });
 }
+
+const animatedEls = document.querySelectorAll(
+    ".fade-up, .fade-up2, .fade-down, .fade-scale, .fade-right, .fade-left"
+);
+
+const observer = new IntersectionObserver(
+    entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                entry.target.classList.add("show");
+            }else{
+                entry.target.classList.remove("show");
+            }
+        });
+    },
+    {
+        threshold: 0.6
+    }
+);
+
+animatedEls.forEach(el => observer.observe(el));
+
+function animateSection(section){
+    section.querySelectorAll(
+        ".fade-up, .fade-up2, .fade-down, .fade-scale, .fade-right, .fade-left"
+    ).forEach(el=>{
+        el.classList.remove("show");
+        void el.offsetWidth; // force reflow
+        el.classList.add("show");
+    });
+}
+
+if(active){
+    animateSection(
+        document.getElementById(current)
+    );
+}
+
