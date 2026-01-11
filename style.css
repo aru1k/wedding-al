@@ -148,7 +148,7 @@ h2{font-size:1.6rem;margin-bottom:14px}
 .monogram2 span{
     font-family:'Cinzel', serif;
     font-weight: 400;
-    font-size:4rem;
+    font-size:3.5rem;
     display:inline-block; /* wajib biar transform jalan */
     position:relative;
 }
@@ -252,7 +252,6 @@ h2{font-size:1.6rem;margin-bottom:14px}
 .nav a.active{
     background:var(--maroon);
     color:#fff;
-    border-color:var(--maroon);
 }
 
 /* ICON */
@@ -497,4 +496,113 @@ h2{font-size:1.6rem;margin-bottom:14px}
     opacity:50;
     font-size:.6rem;
 
+}
+
+.fade-scale{
+    opacity:0;
+    transform:scale(.5);
+}
+
+.fade-scale.show{
+    opacity:1;
+    transform:scale(1);
+}
+
+.fade-up{
+    opacity:0;
+    transform:translateY(60px);
+}
+
+.fade-up.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.fade-up2{
+    opacity:0;
+    transform:translateY(120px);
+}
+
+.fade-up2.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.fade-down{
+    opacity:0;
+    transform:translateY(-60px);
+}
+
+.fade-down.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.fade-right{
+    opacity:0;
+    transform:translateX(-120px);
+}
+
+.fade-right.show{
+    opacity:1;
+    transform:translateX(0);
+}
+
+.fade-left{
+    opacity:0;
+    transform:translateX(120px);
+}
+
+.fade-left.show{
+    opacity:1;
+    transform:translateX(0);
+}
+
+:root{
+    --ease-premium: cubic-bezier(.22,.61,.36,1);
+}
+
+.fade-up,
+.fade-up2,
+.fade-down,
+.fade-left,
+.fade-right,
+.fade-scale{
+    transition:
+    opacity 3s var(--ease-premium),
+    transform 3s var(--ease-premium);
+}
+
+a.fade-up,
+a.fade-down,
+a.fade-left,
+a.fade-right,
+a.fade-scale{
+    display:inline-block;
+}
+
+.nav-link{
+    position:relative;
+}
+
+.nav-link::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:var(--maroon);
+    border-radius:14px;
+    z-index:-1;
+
+    transform:scale(.9);
+    opacity:.6;
+
+    transition:
+    transform .35s cubic-bezier(.22,.61,.36,1),
+    opacity .25s ease;
+}
+
+/* aktif */
+.nav-link.active::before{
+    transform:scale(1);
+    opacity:1;
 }
